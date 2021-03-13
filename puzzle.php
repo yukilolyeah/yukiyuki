@@ -7,14 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный сайт студента Geekbrains</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+        function checkAnswer(inputId, answers) {
+            var userAnswer = document.getElementById(inputId).value;
+            userAnswer = userAnswer.toLowerCase();
+            for (var i = 0; i < answers.length; i++) {
+                if (userAnswer == answers[i]) {
+                    score++;
+                    break;
+                }
+            }
+        }
 
+        var score = 0; //глобальная переменная, используется сразу в обеих функциях. Если создавать её в одной из функций, вторая не поймет что делать
+
+        function checkAnswers() {
+
+            checkAnswer("userAnswer1", ["овца", "баран"]);
+            checkAnswer("userAnswer2", ["свинья", "поросенок"]);
+            checkAnswer("userAnswer3", ["кот", "котенок"]);
+
+            alert("Вы отгадали " + score + " загадки");
+        }
+    </script>
 </head>
 
 <body>
     <div class="content">
-    <?php
-include "menu.php";
-?>
+        <div class="header">
+            <a href="index.html">Главная</a>
+            <span>|</span>
+            <a href="puzzle.html">Загадки</a>
+            <span>|</span>
+            <a href="guess.html">Угадайка</a>
+        </div>
 
         <div class="contentWrap">
             <div class="content">
@@ -23,44 +49,17 @@ include "menu.php";
 
                     <div class="box">
 
-<?php 
-
-if(isset($_GET['userAnswer1']) && isset($_GET['userAnswer2']) && isset($_GET['userAnswer3'])) {
-
-        $userAnswer = $_GET["userAnswer1"];
-        $score = 0;
-        if($userAnswer == "овца" || $userAnswer == "баран") {
-        $score++;
-        }
-
-        $userAnswer = $_GET["userAnswer2"];
-        if($userAnswer == "свинья" || $userAnswer == "поросенок") {
-        $score++;
-        }
-
-        $userAnswer = $_GET["userAnswe3"];
-        if($userAnswer == "кот" || $userAnswer == "котенок") {
-        $score++;
-        }
-}
-
-echo "Вы угадали " . $score . " загадок";
-?>
-
-                    <form method="GET">
                         <p>По горам, по долам ходит шуба да кафтан.</p>
-                        <input type="text" name="userAnswer1">
+                        <input type="text" id="userAnswer1">
 
                         <p>Пятак есть, а ничего не купит</p>
-                        <input type="text" name="userAnswer2">
+                        <input type="text" id="userAnswer2">
 
                         <p>Кто родится с усами?</p>
-                        <input type="text" name="userAnswer3">
+                        <input type="text" id="userAnswer3">
 
                         <br>
-                        <input type="submit" value="Ответить" name="">
-                    </form>
-
+                        <a href="#" onclick="checkAnswers();">Ответить</a>
                     </div>
 
                 </div>
