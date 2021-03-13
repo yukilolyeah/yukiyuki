@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный сайт студента Geekbrains</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+        var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 'A', 'B', 'C', 'D', 'E', 'F', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+        function readInt() {
+            var number = document.getElementById("userAnswer").value;
+            return parseInt(number);
+        }
+
+        function write(text) {
+            document.getElementById("info").innerHTML = text;
+        }
+
+        function getRandomNumber(max) {
+            return Math.round(Math.random() * max);
+        }
+
+        function generate(letters, length) {
+            var a = "";
+            for (var i = 0; i < length; i++) {
+                var n = getRandomNumber(letters.length - 1);
+                a = a + letters[n];
+
+            }
+            return a;
+        }
+
+        function pass(n) {
+            var length = readInt();
+            var password = generate(letters, length)
+            write(password);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="header">
+            <a href="index.html">Главная</a>
+            <span>|</span>
+            <a href="puzzle.html">Загадки</a>
+            <span>|</span>
+            <a href="guess.html">Угадайка</a>
+            <span>|</span>
+            <a href="passw-generator.html">Генератор паролей</a>
+        </div>
+
+        <div class="contentWrap">
+            <div class="content">
+                <div class="center">
+                    <h1>Генератор паролей</h1>
+
+                    <div class="box">
+
+                        <p id="info">Укажите длину пароля</p>
+                        <input type="text" id="userAnswer">
+                        <br>
+                        <a href="#" onclick="pass();">Где пароль, Лебовски?</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright &copy; Yuliya Goncharuk
+    </div>
+
+</body>
+
+</html>
